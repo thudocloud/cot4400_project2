@@ -9,14 +9,7 @@ The function returns: 'selected' which is list of activities, and 'count' which 
 """
 
 def activity_selection(activities):
-    sorted_activities = list(activities)   #using insertion sort, make a copy to avoid modifying the original list
-    for i in range(1, len(sorted_activities)):
-        key = sorted_activities[i]
-        j = i - 1
-        while j >= 0 and sorted_activities[j][1] > key[1]:  #sort by finish time
-            sorted_activities[j + 1] = sorted_activities[j]
-            j -= 1
-        sorted_activities[j + 1] = key
+    sorted_activities = sorted(activities, key=lambda x: x[1])  #sort by finish time
 
     selected = []
 
