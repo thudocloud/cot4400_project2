@@ -4,7 +4,7 @@ import time
 PART B: GREEDY ALGORITHM
 Problem: Activity Selection
 Selects the maximum number of non-overlapping activities using greedy approach
-'activities' parameter is a list of tuples (start_time, end_time)
+'activities' parameter is a list of tuples (start_time, finish_time)
 The function returns: 'selected' which is list of activities, and 'count' which is the total number of selected activities
 """
 
@@ -13,7 +13,7 @@ def activity_selection(activities):
     for i in range(1, len(sorted_activities)):
         key = sorted_activities[i]
         j = i - 1
-        while j >= 0 and sorted_activities[j][1] > key[1]:  #sort by end time
+        while j >= 0 and sorted_activities[j][1] > key[1]:  #sort by finish time
             sorted_activities[j + 1] = sorted_activities[j]
             j -= 1
         sorted_activities[j + 1] = key
@@ -21,14 +21,14 @@ def activity_selection(activities):
     selected = []
 
     selected.append(sorted_activities[0])  #select the first activity
-    last_end_time = sorted_activities[0][1]
+    last_finish_time = sorted_activities[0][1]
 
     # greedy selection
     for i in range(1, len(sorted_activities)):
-        start, end = sorted_activities[i]
-        if start >= last_end_time:  #activity is compatible if its start time >= last selected end time
+        start, finish = sorted_activities[i]
+        if start >= last_finish_time:  #activity is compatible if its start time >= last selected finish time
             selected.append(sorted_activities[i])
-            last_end_time = end
+            last_finish_time = finish
 
     return selected, len(selected)
 
@@ -74,11 +74,11 @@ def activity_selection_test():
     activities = [(0, 3), (1, 5), (2, 4), (6, 8)]
     start = time.perf_counter()
     selected, count = activity_selection(activities)
-    end = time.perf_counter()
+    finish = time.perf_counter()
     print(f"Input: {activities}")
     print(f"Selected Activities: {selected}")
     print(f"Total Count: {count}")
-    print(f"Execution Time: {(end - start) * 1000:.5f} milliseconds\n")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
     print("\nTest Case 2: Medium Input")
@@ -89,22 +89,22 @@ def activity_selection_test():
     ]
     start = time.perf_counter()
     selected, count = activity_selection(activities)
-    end = time.perf_counter()
+    finish = time.perf_counter()
     print(f"Input: {activities}")
     print(f"Selected Activities: {selected}")
     print(f"Total Count: {count}")
-    print(f"Execution Time: {(end - start) * 1000:.5f} milliseconds\n")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
     print("\nTest Case 3: Edge Case - Single Activity")
     activities = [(2, 6)]
     start = time.perf_counter()
     selected, count = activity_selection(activities)
-    end = time.perf_counter()
+    finish = time.perf_counter()
     print(f"Input: {activities}")
     print(f"Selected Activities: {selected}")
     print(f"Total Count: {count}")
-    print(f"Execution Time: {(end - start) * 1000:.5f} milliseconds\n")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
 
@@ -112,11 +112,11 @@ def activity_selection_test():
     activities = [(1, 10), (2, 9), (3, 8), (4, 7)]
     start = time.perf_counter()
     selected, count = activity_selection(activities)
-    end = time.perf_counter()
+    finish = time.perf_counter()
     print(f"Input: {activities}")
     print(f"Selected Activities: {selected}")
     print(f"Total Count: {count}")
-    print(f"Execution Time: {(end - start) * 1000:.5f} milliseconds\n")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
 
@@ -130,13 +130,13 @@ def knapsack_01_test():
     capacity = 6
     start = time.perf_counter()
     max_value, dp = knapsack_01(weights, values, capacity)
-    end = time.perf_counter()
+    finish = time.perf_counter()
     print(f"Weights: {weights}")
     print(f"Values: {values}")
     print(f"Capacity: {capacity}")
     print(f"Max Value: {max_value}")
     print(f"DP Table: {dp}")
-    print(f"Execution Time: {(end - start) * 1000:.5f} milliseconds\n")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
     print("\nTest Case 2: Medium Input")
@@ -145,13 +145,13 @@ def knapsack_01_test():
     capacity = 10
     start = time.perf_counter()
     max_value, dp = knapsack_01(weights, values, capacity)
-    end = time.perf_counter()
+    finish = time.perf_counter()
     print(f"Weights: {weights}")
     print(f"Values: {values}")
     print(f"Capacity: {capacity}")
     print(f"Max Value: {max_value}")
     print(f"DP Table: {dp}")
-    print(f"Execution Time: {(end - start) * 1000:.5f} milliseconds\n")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
     print("\nTest Case 3: Edge Case - Zero Capacity")
@@ -160,13 +160,13 @@ def knapsack_01_test():
     capacity = 0
     start = time.perf_counter()
     max_value, dp = knapsack_01(weights, values, capacity)
-    end = time.perf_counter()
+    finish = time.perf_counter()
     print(f"Weights: {weights}")
     print(f"Values: {values}")
     print(f"Capacity: {capacity}")
     print(f"Max Value: {max_value}")
     print(f"DP Table: {dp}")
-    print(f"Execution Time: {(end - start) * 1000:.5f} milliseconds\n")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
     print("\nTest Case 4: Edge Case - All items are too heavy")
@@ -175,13 +175,13 @@ def knapsack_01_test():
     capacity = 3
     start = time.perf_counter()
     max_value, dp = knapsack_01(weights, values, capacity)
-    end = time.perf_counter()
+    finish = time.perf_counter()
     print(f"Weights: {weights}")
     print(f"Values: {values}")
     print(f"Capacity: {capacity}")
     print(f"Max Value: {max_value}")
     print(f"DP Table: {dp}")
-    print(f"Execution Time: {(end - start) * 1000:.5f} milliseconds\n")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
 
