@@ -52,11 +52,11 @@ def knapsack_01(weights, values, capacity):
                     dp[i][w] = include_value
 
     max_value = dp[n][capacity]
-    return max_value, dp
+    return max_value
 
 
 """
-TEST CASES FOR ALL 3 PARTS
+TEST CASES FOR PART B: GREEDY ALGORITHM
 """
 
 def activity_selection_test():
@@ -112,6 +112,9 @@ def activity_selection_test():
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
+"""
+TEST CASES FOR PART C: DYNAMIC PROGRAMMING
+"""
 
 def knapsack_01_test():
     print("=" * 50)
@@ -122,13 +125,12 @@ def knapsack_01_test():
     values = [4, 6, 8]
     capacity = 6
     start = time.perf_counter()
-    max_value, dp = knapsack_01(weights, values, capacity)
+    max_value = knapsack_01(weights, values, capacity)
     finish = time.perf_counter()
     print(f"Weights: {weights}")
     print(f"Values: {values}")
     print(f"Capacity: {capacity}")
     print(f"Max Value: {max_value}")
-    print(f"DP Table: {dp}")
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
@@ -137,13 +139,12 @@ def knapsack_01_test():
     values = [20, 5, 10, 40, 15, 25]
     capacity = 10
     start = time.perf_counter()
-    max_value, dp = knapsack_01(weights, values, capacity)
+    max_value = knapsack_01(weights, values, capacity)
     finish = time.perf_counter()
     print(f"Weights: {weights}")
     print(f"Values: {values}")
     print(f"Capacity: {capacity}")
     print(f"Max Value: {max_value}")
-    print(f"DP Table: {dp}")
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
@@ -152,13 +153,12 @@ def knapsack_01_test():
     values = [10, 5, 4]
     capacity = 0
     start = time.perf_counter()
-    max_value, dp = knapsack_01(weights, values, capacity)
+    max_value = knapsack_01(weights, values, capacity)
     finish = time.perf_counter()
     print(f"Weights: {weights}")
     print(f"Values: {values}")
     print(f"Capacity: {capacity}")
     print(f"Max Value: {max_value}")
-    print(f"DP Table: {dp}")
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
@@ -167,13 +167,12 @@ def knapsack_01_test():
     values = [10, 15, 40]
     capacity = 3
     start = time.perf_counter()
-    max_value, dp = knapsack_01(weights, values, capacity)
+    max_value = knapsack_01(weights, values, capacity)
     finish = time.perf_counter()
     print(f"Weights: {weights}")
     print(f"Values: {values}")
     print(f"Capacity: {capacity}")
     print(f"Max Value: {max_value}")
-    print(f"DP Table: {dp}")
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
