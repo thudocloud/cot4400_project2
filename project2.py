@@ -135,8 +135,8 @@ def knapsack_01_test():
 
 
     print("\nTest Case 2: Medium Input")
-    weights = [1, 2, 3, 8, 7, 4]
-    values = [20, 5, 10, 40, 15, 25]
+    weights = [1, 2, 3, 8, 7, 4, 5, 9, 10]
+    values = [20, 5, 10, 40, 15, 25, 30, 50, 60]
     capacity = 10
     start = time.perf_counter()
     max_value = knapsack_01(weights, values, capacity)
