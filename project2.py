@@ -2,6 +2,42 @@ import time
 import random
 
 """
+PART A: DIVIDE & CONQUER (D&C) 
+Problem: Merge Sort [cite: 24]
+Sorts an array by recursively splitting it into halves and merging them in order 
+'arr' parameter is the unsorted list of elements provided for sorting [cite: 26]
+The function returns: 'sorted_arr' which is the resulting sorted array [cite: 28]
+Requirement: Implementation must be from scratch without using built-in sort functions 
+"""
+
+def mergeSort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    mid = len(arr) // 2
+    left_half = mergeSort(arr[:mid])   #recursively sort left half
+    right_half = mergeSort(arr[mid:])   #recursively sort right half
+
+    return merge(left_half, right_half)  #merge sorted halves
+
+def merge(left, right):
+    sorted_arr = []
+    i = j = 0
+
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:   #compare elements from both halves
+            sorted_arr.append(left[i])
+            i += 1
+        else:
+            sorted_arr.append(right[j])
+            j += 1
+
+    sorted_arr.extend(left[i:])   #append remaining elements from left half
+    sorted_arr.extend(right[j:])  #append remaining elements from right half
+
+    return sorted_arr
+
+"""
 PART B: GREEDY ALGORITHM
 Problem: Activity Selection
 Selects the maximum number of non-overlapping activities using greedy approach
@@ -55,6 +91,66 @@ def knapsack_01(weights, values, capacity):
     max_value = dp[n][capacity]
     return max_value
 
+"""
+TEST CASES FOR PART A: DIVIDE & CONQUER
+"""
+def merge_sort_test():
+    print("=" * 50)
+    print("DIVIDE & CONQUER: Merge Sort")
+
+    print("\nTest Case 1: Small Input (n = 10)")
+    arr = [38, 27, 43, 3, 9, 82, 10, 5, 12, 15]
+    start = time.perf_counter()
+    sorted_arr = mergeSort(arr)
+    finish = time.perf_counter()
+    print(f"Input: {arr}")
+    print(f"Sorted Output: {sorted_arr}")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
+
+    print("\nTest Case 2: Medium Input (n = 100)")
+    arr = [random.randint(1, 100) for _ in range(100)]
+    start = time.perf_counter()
+    sorted_arr = mergeSort(arr)
+    finish = time.perf_counter()
+    print(f"Input: {arr}")
+    print(f"Sorted Output: {sorted_arr}")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
+
+    print("\nTest Case 3: Large Input (n = 1000)")
+    arr = [random.randint(1, 1000) for _ in range(1000)]
+    start = time.perf_counter()
+    sorted_arr = mergeSort(arr)
+    finish = time.perf_counter()
+    print(f"Input: {arr}")
+    print(f"Sorted Output: {sorted_arr}")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
+
+    print("\nTest Case 4: Edge Case - Already Sorted")
+    arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    start = time.perf_counter()
+    sorted_arr = mergeSort(arr)
+    finish = time.perf_counter()
+    print(f"Input: {arr}")
+    print(f"Sorted Output: {sorted_arr}")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
+
+    print("\nTest Case 5: Edge Case - Reverse Sorted")
+    arr = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+    start = time.perf_counter()
+    sorted_arr = mergeSort(arr)
+    finish = time.perf_counter()
+    print(f"Input: {arr}")
+    print(f"Sorted Output: {sorted_arr}")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
+
+    print("\nTest Case 6: Edge Case - Single Element") 
+    arr = [5]
+    start = time.perf_counter()
+    sorted_arr = mergeSort(arr)
+    finish = time.perf_counter()
+    print(f"Input: {arr}")
+    print(f"Sorted Output: {sorted_arr}")
+    print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 """
 TEST CASES FOR PART B: GREEDY ALGORITHM
@@ -180,6 +276,7 @@ def knapsack_01_test():
 MAIN
 """
 if __name__ == "__main__":
+    merge_sort_test()
     activity_selection_test()
     knapsack_01_test()
 
