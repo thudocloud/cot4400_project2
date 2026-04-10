@@ -3,10 +3,10 @@ import random
 
 """
 PART A: DIVIDE & CONQUER (D&C) 
-Problem: Merge Sort [cite: 24]
-Sorts an array by recursively splitting it into halves and merging them in order 
-'arr' parameter is the unsorted list of elements provided for sorting [cite: 26]
-The function returns: 'sorted_arr' which is the resulting sorted array [cite: 28]
+Problem: Merge Sort
+Sorts an array by recursively splitting it into halves and merging them in order
+'arr' parameter is the unsorted list of elements provided for sorting 
+The function returns: 'sorted_arr' which is the resulting sorted array
 Requirement: Implementation must be from scratch without using built-in sort functions 
 """
 
