@@ -1,4 +1,5 @@
 import time
+import random
 
 """
 PART B: GREEDY ALGORITHM
@@ -63,8 +64,8 @@ def activity_selection_test():
     print("=" * 50)
     print("GREEDY ALGORITHM: Activity Selection")
 
-    print("\nTest Case 1: Small Input")
-    activities = [(0, 3), (1, 5), (2, 4), (6, 8)]
+    print("\nTest Case 1: Small Input (n = 10)")
+    activities = [(0, 3), (1, 5), (2, 4), (6, 8), (5, 7), (8, 10), (11, 17), (3, 4), (7, 9), (9, 11)]
     start = time.perf_counter()
     selected, count = activity_selection(activities)
     finish = time.perf_counter()
@@ -74,12 +75,9 @@ def activity_selection_test():
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
-    print("\nTest Case 2: Medium Input")
-    activities = [
-        (0, 7), (1, 4), (3, 6), (3, 9), 
-        (5, 11), (8, 12), (9, 15), (2, 16),
-        (12, 17), (17, 24), (10, 18), (7, 23) 
-    ]
+    print("\nTest Case 2: Medium Input (n = 100)")
+    acts = [(random.randint(0, 200), random.randint(0, 200)) for _ in range(100)]
+    activities = [(min(s, f), max(s, f)) for s, f in acts]
     start = time.perf_counter()
     selected, count = activity_selection(activities)
     finish = time.perf_counter()
@@ -89,8 +87,9 @@ def activity_selection_test():
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
-    print("\nTest Case 3: Edge Case - Single Activity")
-    activities = [(2, 6)]
+    print("\nTest Case 3: Large Input (n = 1000)")
+    acts = [(random.randint(0, 2000), random.randint(0, 2000)) for _ in range(1000)]
+    activities = [(min(s, f), max(s, f)) for s, f in acts]
     start = time.perf_counter()
     selected, count = activity_selection(activities)
     finish = time.perf_counter()
@@ -120,10 +119,10 @@ def knapsack_01_test():
     print("=" * 50)
     print("DYNAMIC PROGRAMMING: 0/1 Knapsack")
 
-    print("\nTest Case 1: Small Input")
-    weights = [1, 3, 5]
-    values = [4, 6, 8]
-    capacity = 6
+    print("\nTest Case 1: Small Input (n = 10)")
+    weights = [1, 3, 5, 2, 8, 10, 6, 7, 9, 4]
+    values = [4, 6, 8, 3, 7, 9, 5, 2, 1, 10]
+    capacity = 17
     start = time.perf_counter()
     max_value = knapsack_01(weights, values, capacity)
     finish = time.perf_counter()
@@ -134,10 +133,10 @@ def knapsack_01_test():
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
-    print("\nTest Case 2: Medium Input")
-    weights = [1, 2, 3, 8, 7, 4, 5, 9, 10]
-    values = [20, 5, 10, 40, 15, 25, 30, 50, 60]
-    capacity = 10
+    print("\nTest Case 2: Medium Input (n = 100)")
+    weights  = [random.randint(1, 20) for _ in range(100)]
+    values   = [random.randint(1, 100) for _ in range(100)]
+    capacity = 500
     start = time.perf_counter()
     max_value = knapsack_01(weights, values, capacity)
     finish = time.perf_counter()
@@ -148,10 +147,10 @@ def knapsack_01_test():
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
 
-    print("\nTest Case 3: Edge Case - Zero Capacity")
-    weights = [1, 2, 3]
-    values = [10, 5, 4]
-    capacity = 0
+    print("\nTest Case 3: Large Input (n = 1000)")
+    weights  = [random.randint(1, 20) for _ in range(1000)]
+    values   = [random.randint(1, 100) for _ in range(1000)]
+    capacity = 4500
     start = time.perf_counter()
     max_value = knapsack_01(weights, values, capacity)
     finish = time.perf_counter()
