@@ -37,6 +37,7 @@ def merge(left, right):
 
     return sorted_arr
 
+
 """
 PART B: GREEDY ALGORITHM
 Problem: Activity Selection
@@ -61,6 +62,7 @@ def activity_selection(activities):
             last_finish_time = finish
 
     return selected, len(selected)
+
 
 
 """
@@ -90,6 +92,7 @@ def knapsack_01(weights, values, capacity):
 
     max_value = dp[n][capacity]
     return max_value
+
 
 """
 TEST CASES FOR PART A: DIVIDE & CONQUER
@@ -152,6 +155,8 @@ def merge_sort_test():
     print(f"Sorted Output: {sorted_arr}")
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
 
+
+
 """
 TEST CASES FOR PART B: GREEDY ALGORITHM
 """
@@ -205,6 +210,8 @@ def activity_selection_test():
     print(f"Selected Activities: {selected}")
     print(f"Total Count: {count}")
     print(f"Execution Time: {(finish - start) * 1000:.5f} milliseconds\n")
+
+
 
 
 """
